@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <link rel='stylesheet' href='./index.css'>
+    <script src='./index.js'></script>
+</head>
+
+<body>
+    <header>
+
+    </header>
+
+    <main>
+        <div id='nameplate'>
+            <img src='./pathfinder_logo.jpg' id='path-logo'>
+            <form id='nameplate-form'>
+                <label class='char-name'>
+                    <input id='charName' onkeyup='handleFieldChange(this.id, this.value)'>Character Name
+                </label>
+                <label class='alignment'><input id='alignment'
+                        onkeyup='handleFieldChange(this.id, this.value)'>Alignment</label>
+                <label class='player-name'><input id='playerName'
+                        onkeyup='handleFieldChange(this.id, this.value)'>Player Name</label>
+                <label class='char-level'><input id='charLevel'
+                        onkeyup='handleFieldChange(this.id, this.value)'>Character Level</label>
+                <label class='deity'><input id='deity' onkeyup='handleFieldChange(this.id, this.value)'>Deity</label>
+                <label class='homeland'><input id='homeland'
+                        onkeyup='handleFieldChange(this.id, this.value)'>Homeland</label>
+                <label class='race'><input id='race' onkeyup='handleFieldChange(this.id, this.value)'>Race</label>
+                <label class='nameplate-line3'><input id='size'
+                        onkeyup='handleFieldChange(this.id, this.value)'>Size</label>
+                <label class='nameplate-line3'><input id='gender'
+                        onkeyup='handleFieldChange(this.id, this.value)'>Gender</label>
+                <label class='nameplate-line3'><input id='age'
+                        onkeyup='handleFieldChange(this.id, this.value)'>Age</label>
+                <label class='nameplate-line3'><input id='height'
+                        onkeyup='handleFieldChange(this.id, this.value)'>Height</label>
+                <label class='nameplate-line3'><input id='weight'
+                        onkeyup='handleFieldChange(this.id, this.value)'>Weight</label>
+                <label class='nameplate-line3'><input id='hair'
+                        onkeyup='handleFieldChange(this.id, this.value)'>Hair</label>
+                <label class='nameplate-line3'><input id='eyes'
+                        onkeyup='handleFieldChange(this.id, this.value)'>Eyes</label>
+            </form>
+        </div>
+
+        <button type='submit' onclick='handleFormSubmit()'>Submit</button>
+
+    </main>
+
+    <footer>
+    </footer>
+
+    <!-- Bootstrap requirements -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+
+</body>
+
+</html>
