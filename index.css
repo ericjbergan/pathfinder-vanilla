@@ -10,7 +10,7 @@ main {
     width: 70%;
     margin-top: 3em;
     justify-content: space-between;
-    background: gray;
+    background: lightgoldenrodyellow;
 }
 
 #path-logo {
@@ -62,6 +62,97 @@ label {
 
 .nameplate-line3 {
     width: 11%;
+}
+
+
+.split-cols {
+    margin-top: 2em;
+    display: flex;
+}
+
+/* left half-page column */
+
+.left-half {
+    margin-right: 1%;
+    width: 50%;
+    border: 1px blue solid;
+}
+
+.left-partials {
+    height: 10em;
+    display: flex;
+}
+
+.abilities {
+    width: 50%;
+    height: 100%;
+    background: lightgoldenrodyellow;
+    margin-right: 1%;
+}
+
+.hp-init {
+    width: 50%;
+    height: 100%;
+    background: lightgoldenrodyellow;
+    margin-left: 1%;
+}
+
+.armor-class {
+    height: 2em;
+    background: lightgoldenrodyellow;
+    margin-top: 1em;
+}
+
+.touch-flat {
+    height: 2em;
+    background: lightgoldenrodyellow;
+    margin-top: 1em;
+}
+
+.saving-throws {
+    height: 6em;
+    background: lightgoldenrodyellow;
+    margin-top: 1em;
+}
+.BAB {
+    height: 2em;
+    background: lightgoldenrodyellow;
+    margin-top: 1em;
+}
+.CMB {
+    height: 2em;
+    background: lightgoldenrodyellow;
+    margin-top: 1em;
+}
+.CMD {
+    height: 2em;
+    background: lightgoldenrodyellow;
+    margin-top: 1em;
+}
+.weapon {
+    height: 4em;
+    background: lightgoldenrodyellow;
+    margin-top: 1em;
+}
+
+
+/* right half-page column */
+
+.right-half {
+    margin-left: 1%;
+    border: 1px blue solid;
+    width: 50%;
+}
+
+.speed {
+    height: 4em;
+    background: lightgoldenrodyellow;
+}
+
+.skills {
+    background: lightgoldenrodyellow;
+    height: 60em;
+    margin-top: 1em;
 }
 
 

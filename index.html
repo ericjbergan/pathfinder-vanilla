@@ -3,6 +3,7 @@
 <html>
 
 <head>
+    <title>Pathfinder Tools</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -18,12 +19,12 @@
 
     </header>
 
-    <main>
+    <main class=''>
         <div id='nameplate'>
             <img src='./pathfinder_logo.jpg' id='path-logo'>
             <form id='nameplate-form'>
                 <label class='char-name'>
-                    <input id='charName' onkeyup='handleFieldChange(this.id, this.value)'>Character Name
+                    <input id='char-name' onkeyup='handleFieldChange(this.id, this.value)'>Character Name
                 </label>
                 <label class='alignment'><input id='alignment'
                         onkeyup='handleFieldChange(this.id, this.value)'>Alignment</label>
@@ -50,6 +51,61 @@
                 <label class='nameplate-line3'><input id='eyes'
                         onkeyup='handleFieldChange(this.id, this.value)'>Eyes</label>
             </form>
+        </div>
+
+
+        <div class='split-cols'>
+            <div class='left-half'>
+                <div class='left-partials'>
+                    <div class='abilities'>
+                        <p>Abilities section</p>
+                    </div>
+                    <div class='hp-init'>
+                        <p>HP and INIT section</p>
+                    </div>
+                </div>
+                <div class='armor-class'>
+                    <p>AC line</p>
+                </div>
+                <div class='touch-flat'>
+                    <p>Touch/Flat-footed line</p>
+                </div>
+                <div class='saving-throws'>
+                    <p>Saving throws section</p>
+                </div>
+                <div class='BAB'>
+                    <p>Base attack bonus line</p>
+                </div>
+                <div class='CMB'>
+                    <p>CMB line</p>
+                </div>
+                <div class='CMD'>
+                    <p>CMD line</p>
+                </div>
+                <div class='weapon'>
+                    <p>Weapon</p>
+                </div>
+                <div class='weapon'>
+                    <p>Weapon</p>
+                </div>
+                <div class='weapon'>
+                    <p>Weapon</p>
+                </div>
+                <div class='weapon'>
+                    <p>Weapon</p>
+                </div>
+                <div class='weapon'>
+                    <p>Weapon</p>
+                </div>
+            </div>
+            <div class='right-half'>
+                <div class='speed'>
+                    <p>Speed section</p>
+                </div>
+                <div class='skills'>
+                    <p>Skills section</p>
+                </div>
+            </div>
         </div>
 
         <button type='submit' onclick='handleFormSubmit()'>Submit</button>
