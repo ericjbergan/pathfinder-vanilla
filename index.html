@@ -6,6 +6,7 @@
     <title>Pathfinder Tools</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -22,59 +23,263 @@
     <main class=''>
         <div id='nameplate'>
             <img src='./pathfinder_logo.jpg' id='path-logo'>
+
+            <!-- Nameplate section -->
             <form id='nameplate-form'>
-                <label class='char-name'>
-                    <input id='char-name' onkeyup='handleFieldChange(this.id, this.value)'>Character Name
-                </label>
-                <label class='alignment'><input id='alignment'
-                        onkeyup='handleFieldChange(this.id, this.value)'>Alignment</label>
-                <label class='player-name'><input id='playerName'
-                        onkeyup='handleFieldChange(this.id, this.value)'>Player Name</label>
-                <label class='char-level'><input id='charLevel'
-                        onkeyup='handleFieldChange(this.id, this.value)'>Character Level</label>
-                <label class='deity'><input id='deity' onkeyup='handleFieldChange(this.id, this.value)'>Deity</label>
-                <label class='homeland'><input id='homeland'
-                        onkeyup='handleFieldChange(this.id, this.value)'>Homeland</label>
-                <label class='race'><input id='race' onkeyup='handleFieldChange(this.id, this.value)'>Race</label>
-                <label class='nameplate-line3'><input id='size'
-                        onkeyup='handleFieldChange(this.id, this.value)'>Size</label>
-                <label class='nameplate-line3'><input id='gender'
-                        onkeyup='handleFieldChange(this.id, this.value)'>Gender</label>
-                <label class='nameplate-line3'><input id='age'
-                        onkeyup='handleFieldChange(this.id, this.value)'>Age</label>
-                <label class='nameplate-line3'><input id='height'
-                        onkeyup='handleFieldChange(this.id, this.value)'>Height</label>
-                <label class='nameplate-line3'><input id='weight'
-                        onkeyup='handleFieldChange(this.id, this.value)'>Weight</label>
-                <label class='nameplate-line3'><input id='hair'
-                        onkeyup='handleFieldChange(this.id, this.value)'>Hair</label>
-                <label class='nameplate-line3'><input id='eyes'
-                        onkeyup='handleFieldChange(this.id, this.value)'>Eyes</label>
+                <div class='nameplate-line1'>
+                    <label class='char-name'>
+                        <input id='charName' onkeyup='handleChange(event)'>Character Name
+                    </label>
+                    <label class='alignment'><input class='input-nameplate' id='alignment'
+                            onkeyup='handleChange(event)'>Alignment</label>
+                    <label class='player-name'><input class='input-nameplate' id='playerName'
+                            onkeyup='handleChange(event)'>Player Name</label>
+                </div>
+                <div class='nameplate-line2'>
+                    <label class='char-level'><input class='input-nameplate' id='charLevel'
+                            onkeyup='handleChange(event)'>Character Level</label>
+                    <label class='deity'><input class='input-nameplate' id='deity'
+                            onkeyup='handleChange(event)'>Deity</label>
+                    <label class='homeland'><input class='input-nameplate' id='homeland'
+                            onkeyup='handleChange(event)'>Homeland</label>
+                </div>
+                <div class='nameplate-line3'>
+                    <label class='race'><input class='input-nameplate' id='race'
+                            onkeyup='handleChange(event)'>Race</label>
+                    <label class='nameplate-line3-small-field'><input class='input-nameplate' id='size'
+                            onkeyup='handleChange(event)'>Size</label>
+                    <label class='nameplate-line3-small-field'><input class='input-nameplate' id='gender'
+                            onkeyup='handleChange(event)'>Gender</label>
+                    <label class='nameplate-line3-small-field'><input class='input-nameplate' id='age'
+                            onkeyup='handleChange(event)'>Age</label>
+                    <label class='nameplate-line3-small-field'><input class='input-nameplate' id='height'
+                            onkeyup='handleChange(event)'>Height</label>
+                    <label class='nameplate-line3-small-field'><input class='input-nameplate' id='weight'
+                            onkeyup='handleChange(event)'>Weight</label>
+                    <label class='nameplate-line3-small-field'><input class='input-nameplate' id='hair'
+                            onkeyup='handleChange(event)'>Hair</label>
+                    <label class='nameplate-line3-small-field'><input class='input-nameplate' id='eyes'
+                            onkeyup='handleChange(event)'>Eyes</label>
+                </div>
             </form>
         </div>
 
-
         <div class='split-cols'>
             <div class='left-half'>
-                <div class='left-partials'>
-                    <div class='abilities'>
-                        <p>Abilities section</p>
-                    </div>
-                    <div class='hp-init'>
-                        <p>HP and INIT section</p>
+                <div class='left-half-top'>
+                    <div class='left-partials'>
+
+                        <!-- Abilities section -->
+                        <div class='abilities' id='abilities'>
+                            <div class='ability-labels'>
+                                <p class='ability-name-header'>Ability Name</p>
+                                <p class='ability-name-header'>Ability Score</p>
+                                <p class='ability-name-header'>Ability Mod</p>
+                                <p class='ability-name-header'>Temp Adjust</p>
+                                <p class='ability-name-header'>Temp Mod</p>
+                            </div>
+                        </div>
+
+                        <!-- HP and Initiative section -->
+                        <div class='hp-init'>
+                            <div class='HP-line'>
+                                <label class='HP-tag'>
+                                    <div class='tag'>HP</div>
+                                </label>
+                                <label class='HP-total'><input id='hitPointTotal' onkeyup='handleChange(event)'>HP
+                                    total</label>
+                                <label class='dmg-red'><input id='dmgReduction' onkeyup='handleChange(event)'>Dmg
+                                    Reduction</label>
+                            </div>
+                            <label><textarea class='wounds' id='woundsBox'
+                                    onkeyup='handleChange(event)'></textarea>Wounds/current HP
+                            </label>
+                            <label><textarea class='nonlethal' id='nonlethalBox' rows='1'
+                                    onkeyup='handleChange(event)'></textarea>Nonlethal Damage
+                            </label>
+                            <div class='initiative-line'>
+                                <label class='init-tag tag'>
+                                    <div>Initiative</div>
+                                </label>
+                                <label class='init-label'>
+                                    <div class='init-field div-border' id='initTotal'></div>Init Total
+                                </label>
+
+                                <p class='symbol'>=</p>
+                                <label class='init-label'>
+                                    <div class='init-field div-border' id='initDexModifier'>
+                                    </div>Dex Mod
+                                </label>
+                                <p class='symbol'>+</p>
+                                <label class='init-label'><input class='init-field' id='initMiscModifier'
+                                        onchange='handleChange(event)'></input>Misc Mod</label>
+                            </div>
+                        </div>
                     </div>
                 </div>
+
+                <!-- Armor Class section -->
                 <div class='armor-class'>
-                    <p>AC line</p>
+                    <label class='AC-line-tag'>
+                        <div class='tag'>AC</div>
+                    </label>
+                    <label class='AC-labels'>
+                        <div class='AC-line-field div-border' id='armorClassTotal'></div>Total
+                    </label>
+                    <p class='symbol'>=</p>
+                    <label class='' style='width: 8%;'>
+                        <p class='AC-line-field div-border'>10</p>
+                    </label>
+                    <p class='symbol'>+</p>
+                    <label class='AC-labels'>
+                        <input class='AC-line-field' id='armorBonus' onchange='handleChange(event)'></input>
+                        Armor Bonus</label>
+                    <p class='symbol'>+</p>
+                    <label class='AC-labels'>
+                        <input class='AC-line-field' id='shieldBonus' onchange='handleChange(event)'></input>
+                        Shield Bonus</label>
+                    <p class='symbol'>+</p>
+                    <label class='AC-labels'>
+                        <div class='AC-line-field div-border' id='ACdexModifier'></div>Dex Mod
+                    </label>
+                    <p class='symbol'>+</p>
+                    <label class='AC-labels'>
+                        <input class='AC-line-field' id='sizeModifier' onchange='handleChange(event)'></input>Size
+                        Mod</label>
+                    <p class='symbol'>+</p>
+                    <label class='AC-labels'>
+                        <input class='AC-line-field' id='naturalArmor' onchange='handleChange(event)'></input>Natural
+                        Armor</label>
+                    <p class='symbol'>+</p>
+                    <label class='AC-labels'>
+                        <input class='AC-line-field' id='deflectionModifier' onchange='handleChange(event)'></input>Defl
+                        Mod</label>
+                    <p class='symbol'>+</p>
+                    <label class='AC-labels'>
+                        <input class='AC-line-field' id='ACmiscModifier' onchange='handleChange(event)'></input>Misc
+                        Mod</label>
                 </div>
+
+                <!-- Touch and flat-footed section -->
                 <div class='touch-flat'>
-                    <p>Touch/Flat-footed line</p>
+                    <label class='touch-tag-label'>
+                        <div class='touch-tag tag'>Touch</div>
+                    </label>
+                    <label class='touch-input-label'><input class='touch-input' id='touch'></input></label>
+                    <label class='flat-tag-label'>
+                        <div class='flat-tag tag'>Flat-footed</div>
+                    </label>
+                    <label class='flat-input-label'><input class='flat-input' id='flatFooted'></input></label>
+                    <label><textarea class='touch-textarea' rows='1' id='touchTextarea' placeholder='Modifiers'>
+                        </textarea></label>
                 </div>
-                <div class='saving-throws'>
-                    <p>Saving throws section</p>
+
+                <!-- Saving throw section -->
+                <div class='saving-throws' id='savingThrows'>
+                    <div class=''>
+                        <div class='saving-throw-headers'>
+                            <div class='save-tag-header'></div>
+                            <div class='saving-throw-field'>Total</div>
+                            <div class='symbol'></div>
+                            <div class='saving-throw-field'>Base Save</div>
+                            <div class='symbol'></div>
+                            <div class='saving-throw-field'>Ability Mod</div>
+                            <div class='symbol'></div>
+                            <div class='saving-throw-field'>Magic Mod</div>
+                            <div class='symbol'></div>
+                            <div class='saving-throw-field'>Misc Mod</div>
+                            <div class='symbol'></div>
+                            <div class='saving-throw-field'>Temp Mod</div>
+                        </div>
+                        <div class='saving-throw-line'>
+                            <label class='save-tag tag'>
+                                <div>Fortitude</div>
+                            </label>
+                            <label class='saving-throw-field'>
+                                <div class='div-border' id='fortitudeSavingThrowTotal'></div>
+                            </label>
+                            <p class='symbol'>=</p>
+                            <label class='saving-throw-field'><input class='saving-throw-input' id='fortitudeBaseSave'
+                                    onchange=handleChange(event)></input></label>
+                            <p class='symbol'>+</p>
+                            <label class='saving-throw-field'>
+                                <div class='div-border' id='fortitudeAbilityModifier'></div>
+                            </label>
+                            <p class='symbol'>+</p>
+                            <label class='saving-throw-field'><input class='saving-throw-input'
+                                    id='fortitudeMagicModifier' onchange=handleChange(event)></input></label>
+                            <p class='symbol'>+</p>
+                            <label class='saving-throw-field'><input class='saving-throw-input'
+                                    id='fortitudeMiscModifier' onchange=handleChange(event)></input></label>
+                            <p class='symbol'>+</p>
+                            <label class='saving-throw-field'><input class='saving-throw-input'
+                                    id='fortitudeTempModifier' onchange=handleChange(event)></input></label>
+                        </div>
+                        <div class='saving-throw-line'>
+                            <label class='save-tag tag'>
+                                <div>Reflex</div>
+                            </label>
+                            <label class='saving-throw-field'>
+                                <div class='div-border' id='reflexSavingThrowTotal'></div>
+                            </label>
+                            <p class='symbol'>=</p>
+                            <label class='saving-throw-field'><input class='saving-throw-input' id='reflexBaseSave'
+                                    onchange=handleChange(event)></input></label>
+                            <p class='symbol'>+</p>
+                            <label class='saving-throw-field'>
+                                <div class='div-border' id='reflexAbilityModifier'></div>
+                            </label>
+                            <p class='symbol'>+</p>
+                            <label class='saving-throw-field'><input class='saving-throw-input' id='reflexMagicModifier'
+                                    onchange=handleChange(event)></input></label>
+                            <p class='symbol'>+</p>
+                            <label class='saving-throw-field'><input class='saving-throw-input' id='reflexMiscModifier'
+                                    onchange=handleChange(event)></input></label>
+                            <p class='symbol'>+</p>
+                            <label class='saving-throw-field'><input class='saving-throw-input' id='reflexTempModifier'
+                                    onchange=handleChange(event)></input></label>
+                        </div>
+                        <div class='saving-throw-line'>
+                            <label class='save-tag tag'>
+                                <div>Will</div>
+                            </label>
+                            <label class='saving-throw-field'>
+                                <div class='div-border' id='willSavingThrowTotal'></div>
+                            </label>
+                            <p class='symbol'>=</p>
+                            <label class='saving-throw-field'><input class='saving-throw-input' id='willBaseSave'
+                                    onchange=handleChange(event)></input></label>
+                            <p class='symbol'>+</p>
+                            <label class='saving-throw-field'>
+                                <div class='div-border' id='willAbilityModifier'></div>
+                            </label>
+                            <p class='symbol'>+</p>
+                            <label class='saving-throw-field'><input class='saving-throw-input' id='willMagicModifier'
+                                    onchange=handleChange(event)></input></label>
+                            <p class='symbol'>+</p>
+                            <label class='saving-throw-field'><input class='saving-throw-input' id='willMiscModifier'
+                                    onchange=handleChange(event)></input></label>
+                            <p class='symbol'>+</p>
+                            <label class='saving-throw-field'><input class='saving-throw-input' id='willTempModifier'
+                                    onchange=handleChange(event)></input></label>
+                        </div>
+                    </div>
+                    <label class='save-modifiers-textarea-label'>Modifiers<textarea class='save-modifiers-textarea'
+                            id='saveTextarea' onkeyup='handleChange(event)'></textarea></label>
                 </div>
+
+                <!-- BAB/Spell resist/CMB/CMD -->
                 <div class='BAB'>
-                    <p>Base attack bonus line</p>
+                    <label class='bab-tag tag'>
+                        <p class='base-att-bonus'>Base Attack Bonus</p>
+                    </label>
+                    <label class='bab-field-label'><input class='bab-input' id='babInput'
+                            onchange='handleChange(event)'></input></label>
+                    <label class='spell-resist-tag tag'>
+                        <p class='base-att-bonus'>Spell Resistance</p>
+                    </label>
+                    <label class='spell-resist-field-label'><input class='spell-resist-input' id='spellResistInput'
+                            onchange='handleChange(event)'></input></label>
                 </div>
                 <div class='CMB'>
                     <p>CMB line</p>
@@ -82,27 +287,28 @@
                 <div class='CMD'>
                     <p>CMD line</p>
                 </div>
-                <div class='weapon'>
-                    <p>Weapon</p>
-                </div>
-                <div class='weapon'>
-                    <p>Weapon</p>
-                </div>
-                <div class='weapon'>
-                    <p>Weapon</p>
-                </div>
-                <div class='weapon'>
-                    <p>Weapon</p>
-                </div>
-                <div class='weapon'>
-                    <p>Weapon</p>
+
+                <!-- Weapons section -->
+                <div class='weapons-section'>
+                    <div class='weapon-line1' id='weapon0Line1'></div>
+                    <div class='weapon-line2' id='weapon0Line2'></div>
+                    <div class='weapon-line1' id='weapon1Line1'></div>
+                    <div class='weapon-line2' id='weapon1Line2'></div>
+                    <div class='weapon-line1' id='weapon2Line1'></div>
+                    <div class='weapon-line2' id='weapon2Line2'></div>
+                    <div class='weapon-line1' id='weapon3Line1'></div>
+                    <div class='weapon-line2' id='weapon3Line2'></div>
+                    <div class='weapon-line1' id='weapon4Line1'></div>
+                    <div class='weapon-line2' id='weapon4Line2'></div>
                 </div>
             </div>
             <div class='right-half'>
                 <div class='speed'>
                     <p>Speed section</p>
                 </div>
-                <div class='skills'>
+
+                <!-- Skills section -->
+                <div class='skills-section' id='skillsSection'>
                     <p>Skills section</p>
                 </div>
             </div>

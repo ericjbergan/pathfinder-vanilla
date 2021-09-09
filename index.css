@@ -1,5 +1,37 @@
 main {
-    margin: 0 5%;
+    text-align: center;
+    font-size: 1vw;
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#path-logo {
+    width: 30%;
+}
+
+.div-border {
+    border: 1px solid grey;
+    height: 1.9vw;
+}
+
+.tag {
+    background: #686868;
+    color: white;
+    height: 1.9vw
+}
+
+.label-small-text {
+    font-size: .8vw;
+}
+
+.symbol {
+    width: 3%;
+}
+
+input {
+    width: 95%;
+    text-align: center;
 }
 
 #nameplate {
@@ -8,28 +40,19 @@ main {
 
 #nameplate-form {
     width: 70%;
-    margin-top: 3em;
-    justify-content: space-between;
-    background: lightgoldenrodyellow;
+    margin-top: 3vw;
 }
 
-#path-logo {
-    width: 30%;
-}
-
-input {
-    display: inline-block;
-    position: relative;
-    width: 95%;
-    margin-top: 2em;
-}
-
-label {
-    display: inline-block;
-    text-align: center;
+.input-nameplate {
+    margin-top: 2vw;
 }
 
 /* nameplate line 1 */
+.nameplate-line1 {
+    display: flex;
+    justify-content: space-between;
+}
+
 .char-name {
     width: 39%;
 }
@@ -41,6 +64,10 @@ label {
 }
 
 /* nameplate line 2 */
+.nameplate-line2 {
+    display: flex;
+    justify-content: space-between;
+}
 
 .char-level {
     width: 14.5%;
@@ -55,70 +82,236 @@ label {
 }
 
 /* nameplate line 3 */
+.nameplate-line3 {
+    display: flex;
+    justify-content: space-between;
+}
+
+.nameplate-line3-small-field {
+    width: 11%;
+}
 
 .race {
     width: 19%;
 }
 
-.nameplate-line3 {
-    width: 11%;
-}
 
 
 .split-cols {
-    margin-top: 2em;
+    margin-top: 2vw;
     display: flex;
 }
 
 /* left half-page column */
-
 .left-half {
     margin-right: 1%;
+    padding: 5px;
     width: 50%;
     border: 1px blue solid;
 }
 
-.left-partials {
-    height: 10em;
+.left-half-top {
     display: flex;
+}
+
+.left-partials {
+    display: flex;
+}
+
+.ability-name-header {
+    width: 18%;
+}
+
+.ability-labels {
+    display: flex;
+    justify-content: space-between;
+    font-size: .8vw;
 }
 
 .abilities {
     width: 50%;
-    height: 100%;
-    background: lightgoldenrodyellow;
     margin-right: 1%;
 }
 
 .hp-init {
     width: 50%;
-    height: 100%;
-    background: lightgoldenrodyellow;
     margin-left: 1%;
 }
 
+.HP-line {
+    display: flex;
+}
+
+.HP-total {
+    width: 44%;
+}
+
+.dmg-red {
+    width: 44%;
+}
+
+.HP-tag {
+    width: 15%;
+    text-align: center;
+}
+
+.wounds {
+    margin-top: 1vw;
+    width: 101%;
+    outline: none;
+    resize: none;
+    min-height: 4vw;
+}
+
+.nonlethal {
+    margin-top: 1vw;
+    width: 102%;
+    outline: none;
+    resize: none;
+}
+
+.initiative-line {
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.2vw;
+}
+
+.init-tag {
+    width: 35%;
+}
+
+.init-label {
+    width: 15%;
+    font-size: .8vw;
+}
+
+.init-field {
+    font-size: 1vw;
+}
+
 .armor-class {
-    height: 2em;
-    background: lightgoldenrodyellow;
-    margin-top: 1em;
+    display: flex;
+    margin-top: 1vw;
+}
+
+.AC-line-tag {
+    width: 8%;
+    text-align: center;
+    margin-right: 2%;
+}
+
+.AC-line-field {
+    font-size: 1vw;
+}
+
+.AC-labels {
+    width: 8%;
+    justify-content: space-between;
+    font-size: .7vw;
 }
 
 .touch-flat {
-    height: 2em;
-    background: lightgoldenrodyellow;
-    margin-top: 1em;
+    margin-top: 1vw;
+    display: flex;
+    justify-content: space-between;
+}
+
+.touch-tag-label {
+    width: 15%;
+}
+
+.touch-input-label {
+    width: 6%;
+    margin-left: -8%;
+}
+
+.flat-tag-label {
+    width: 15%;
+    margin-left: 5%;
+}
+
+.flat-input-label {
+    width: 6%;
+    margin-left: -8%;
+}
+
+.touch-textarea {
+    width: 99%;
+    outline: none;
+    resize: none;
+    min-height: 1vw;
 }
 
 .saving-throws {
-    height: 6em;
-    background: lightgoldenrodyellow;
-    margin-top: 1em;
+    display: flex;
+    margin-top: 1vw;
 }
+
+.saving-throw-line {
+    justify-content: space-between;
+    display: flex;
+    margin-bottom: 5px;
+}
+
+.save-tag {
+    width: 18%;
+    background: #686868;
+    text-align: center;
+}
+
+.save-tag-header {
+    width: 18%;
+}
+
+.saving-throw-headers {
+    display: flex;
+    justify-content: space-between;
+    font-size: .8vw;
+}
+
+.saving-throw-field {
+    width: 10%;
+    text-align: center;
+}
+
+.save-modifiers-textarea-label {
+    font-size: .8vw;
+}
+
+.save-modifiers-textarea {
+    margin-top: 1vw;
+    width: 95%;
+    outline: none;
+    resize: none;
+    font-size: 1vw;
+    min-height: 8vw;
+    margin-top: 1.4vw;
+    margin-left: .3vw;
+}
+
 .BAB {
-    height: 2em;
-    background: lightgoldenrodyellow;
-    margin-top: 1em;
+    margin-top: 1vw;
+    display: flex;
+    justify-content: space-between;
 }
+
+.bab-tag {
+    width: 25%;
+}
+
+.bab-field-label {
+    width: 10%;
+}
+
+.spell-resist-tag {
+    width: 25%;
+    margin-left: 10%;
+}
+
+.spell-resist-field-label {
+    width: 10%;
+}
+
 .CMB {
     height: 2em;
     background: lightgoldenrodyellow;
@@ -129,12 +322,38 @@ label {
     background: lightgoldenrodyellow;
     margin-top: 1em;
 }
-.weapon {
-    height: 4em;
-    background: lightgoldenrodyellow;
-    margin-top: 1em;
+.weapons-section {
+    margin-top: 1vw;
 }
 
+.weapon-line2 {
+    margin-bottom: 2vw;
+}
+
+.weapon-label {
+    width: 60%;
+}
+
+.att-bonus-label {
+    width: 25%;
+}
+
+.critical-label {
+    width: 15%;
+}
+
+.type-label {
+    width: 15%;
+}
+
+.range-label {
+    width: 25%;
+}
+
+.ammunition-label,
+.damage-label {
+    width: 30%;
+}
 
 /* right half-page column */
 
@@ -149,10 +368,31 @@ label {
     background: lightgoldenrodyellow;
 }
 
-.skills {
+.skills-section {
     background: lightgoldenrodyellow;
-    height: 60em;
     margin-top: 1em;
+}
+
+.skill-line {
+    display: flex;
+    justify-content: space-between;
+    margin-right: 2%;
+}
+
+.checkbox-label {
+    width: 5%;
+}
+
+.skill-name-label {
+    width: 15%;
+}
+
+.skill-total-bonus-label {
+    width: 10%;
+}
+
+.skill-assoc-ability-label {
+    width: 10%;
 }
 
 
