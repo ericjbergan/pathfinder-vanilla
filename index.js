@@ -99,7 +99,7 @@ const data = {
 
 const createNewDiv = (id, newClass, insideText) => {
     id ? id = id.split(' ').join('') : null;
-    id ? id = id.charAt(0).toLowerCase() + id.slice(1) : null;
+    id ? id = id.charAt(0).toLowerCase() + id.slice(1).replace(/[^a-zA-Z0-9]/g, '') : null;
     const newDiv = document.createElement('div');
     id ? newDiv.id = id : null;
     newDiv.setAttribute('class', newClass);
@@ -133,10 +133,8 @@ const createNewSymbol = symbol => {
 }
 
 const createCheckbox = (id, newClass) => {
-    console.log(newClass);
     id = id.split(' ').join('');
     id = id.charAt(0).toLowerCase() + id.slice(1);
-    console.log(id);
     const newCheckbox = document.createElement('input');
     newCheckbox.id = id;
     newCheckbox.setAttribute('type', 'checkbox');
@@ -233,7 +231,7 @@ const handleArmorClassChange = (id, value) => {
         parseInt(calculateAbilityModifier(data.DEXabilityScore)) + parseInt(data.sizeModifier) + parseInt(data.naturalArmor) +
         parseInt(data.deflectionModifier) + parseInt(data.ACmiscModifier);
 
-    document.getElementById('armorClassTotal').innerHTML=data.armorClassTotal
+    document.getElementById('armorClassTotal').innerHTML = data.armorClassTotal
     document.getElementById('ACdexModifier').innerHTML = calculateAbilityModifier(data.DEXabilityScore);
 }
 
@@ -243,21 +241,21 @@ const handleSavingThrowChange = () => {
         'willAbilityModifier'];
     const savingThrowAssociatedAbilityArray = ['CONabilityScore', 'DEXabilityScore', 'WISabilityScore'];
 
-    for(i=0; i<savingThrowTotalArray.length; i++) {
-        document.getElementById(savingThrowTotalArray[i] + 'SavingThrowTotal').innerHTML = 
-        parseInt(data[savingThrowTotalArray[i] + 'BaseSave']) + 
-        parseInt(calculateAbilityModifier(data[savingThrowAssociatedAbilityArray[i]])) + 
-        parseInt(data[savingThrowTotalArray[i] + 'MagicModifier']) + parseInt(data[savingThrowTotalArray[i] + 'MiscModifier']) +
-        parseInt(data[savingThrowTotalArray[i] + 'TempModifier']);
+    for (i = 0; i < savingThrowTotalArray.length; i++) {
+        document.getElementById(savingThrowTotalArray[i] + 'SavingThrowTotal').innerHTML =
+            parseInt(data[savingThrowTotalArray[i] + 'BaseSave']) +
+            parseInt(calculateAbilityModifier(data[savingThrowAssociatedAbilityArray[i]])) +
+            parseInt(data[savingThrowTotalArray[i] + 'MagicModifier']) + parseInt(data[savingThrowTotalArray[i] + 'MiscModifier']) +
+            parseInt(data[savingThrowTotalArray[i] + 'TempModifier']);
 
-        document.getElementById(savingThrowAbilityModifierArray[i]).innerHTML = 
+        document.getElementById(savingThrowAbilityModifierArray[i]).innerHTML =
             calculateAbilityModifier(data[savingThrowAssociatedAbilityArray[i]]);
     }
 }
 
 const createWeaponSection = () => {
     const weaponLabelsArray = ['Weapon', 'Attack Bonus', 'Critical', 'Type', 'Range', 'Ammunition', 'Damage'];
-    for(i=0; i<5; i++) {
+    for (i = 0; i < 5; i++) {
 
         // line 1 of each weapon
         const newWeapLine1Id = document.getElementById('weapon' + i + 'Line1');
@@ -317,42 +315,142 @@ const createSkillsSection = () => {
     const skillsAbilityArray0 = ['DEX', 'INT', 'CHA', 'STR'];
     const skillsAbilityArray1 = ['INT', 'INT', 'INT'];
     const skillsAbilityArray2 = ['CHA', 'DEX', 'CHA', 'DEX', 'DEX', 'CHA', 'WIS', 'CHA', 'INT', 'INT', 'INT',
-        'INT', 'INT', 'INT', 'INT', 'INT', 'INT', 'INT', 'WIS'];
+        'INT', 'INT', 'INT', 'INT', 'INT', 'INT', 'INT', 'INT', 'WIS'];
     const skillsAbilityArray3 = ['CHA', 'CHA', 'WIS', 'WIS'];
     const skillsAbilityArray4 = ['DEX', 'WIS', 'DEX', 'INT', 'DEX', 'WIS', 'STR', 'CHA'];
 
-    for(i=0; i<skillsArray0.length; i++) {
-        const skillId = ('skill' + skillsArray0[i]).split(' ').join('');
-        const skillSectionId = document.getElementById('skillsSection');
-        const newSkillLine = createNewDiv(null, 'skill-line');
-        
-        const checkboxLabel = createNewLabel('checkbox-label');
-        checkboxLabel.append(createCheckbox(skillId + 'Checkbox', 'skill-checkbox'));
-        newSkillLine.append(checkboxLabel);
-        
-        const skillNameLabel = createNewLabel('skill-name-label');
-        skillNameLabel.append(createNewDiv(null, 'skill-name', skillsArray0[i]));
-        newSkillLine.append(skillNameLabel);
-        
-        const skillTotalBonusLabel = createNewLabel('skill-total-bonus-label');
-        skillTotalBonusLabel.append(createNewDiv(skillId + 'TotalBonus', 'skill-total-bonus div-border'));
-        newSkillLine.append(skillTotalBonusLabel);
+    const createRegularSkillLine = (skillArray, abilityArray) => {
+        for (i = 0; i < skillArray.length; i++) {
+            console.log();
 
-        newSkillLine.append(createNewSymbol('='));
+            const skillId = ('skill' + skillArray[i]).split(' ').join('').replace(/[^a-zA-Z ]/g, "");
+            const skillSectionId = document.getElementById('skillsSection');
+            const newSkillLine = createNewDiv(null, 'skill-line');
 
-        const skillAssocAbilityLabel = createNewDiv(null, 'skill-assoc-ability-label');
-        skillAssocAbilityLabel.append(createNewDiv(skillId + 'AssocAbility', 'skill-assoc-ability',
-            skillsAbilityArray0[i]));
-        newSkillLine.append(skillAssocAbilityLabel);
+            const checkboxLabel = createNewLabel('checkbox-label');
+            checkboxLabel.append(createCheckbox(skillId + 'Checkbox', 'skill-checkbox'));
+            newSkillLine.append(checkboxLabel);
 
-        skillSectionId.append(newSkillLine);
+            const skillNameLabel = createNewLabel('skill-regular-name-label');
+            skillNameLabel.append(createNewDiv(null, 'skill-name', skillArray[i]));
+            newSkillLine.append(skillNameLabel);
+
+            const skillTotalBonusLabel = createNewLabel('skill-total-bonus-label');
+            skillTotalBonusLabel.append(createNewDiv(skillId + 'TotalBonus', 'skill-total-bonus div-border'));
+            newSkillLine.append(skillTotalBonusLabel);
+
+            newSkillLine.append(createNewSymbol('='));
+
+            const skillAssocAbilityLabel = createNewDiv(null, 'skill-assoc-ability-label');
+            skillAssocAbilityLabel.append(createNewDiv(null, 'skill-assoc-ability',
+                abilityArray[i]));
+            newSkillLine.append(skillAssocAbilityLabel);
+
+            const skillAssocAbilityModLabel = createNewDiv(null, 'skill-assoc-ability-mod-label');
+            skillAssocAbilityModLabel.append(createNewDiv(skillId + 'AssocAbilityMod', 'skill-assoc-ability-mod div-border'));
+            newSkillLine.append(skillAssocAbilityModLabel);
+
+            newSkillLine.append(createNewSymbol('+'));
+
+            const skillRanksLabel = createNewDiv(null, 'skill-ranks-label');
+            skillRanksLabel.append(createNewInput(skillId + 'Ranks', 'skill-ranks', 'number'));
+            newSkillLine.append(skillRanksLabel);
+
+            newSkillLine.append(createNewSymbol('+'));
+
+            const skillMiscModLabel = createNewDiv(null, 'skill-misc-mod-label');
+            skillMiscModLabel.append(createNewInput(skillId + 'Ranks', 'skill-misc-mod', 'number'));
+            newSkillLine.append(skillMiscModLabel);
+
+            skillSectionId.append(newSkillLine);
+        }
     }
+
+    const createCustomSkillLine = (skillArray, abilityArray) => {
+        for (i = 0; i < skillArray.length; i++) {
+            console.log();
+
+            const skillId = ('skill' + skillArray[i]).split(' ').join('');
+            const skillSectionId = document.getElementById('skillsSection');
+            const newSkillLine = createNewDiv(null, 'skill-line');
+
+            const checkboxLabel = createNewLabel('checkbox-label');
+            checkboxLabel.append(createCheckbox(skillId + 'Checkbox', 'skill-checkbox'));
+            newSkillLine.append(checkboxLabel);
+
+            const skillNameLabel = createNewLabel('skill-custom-name-label');
+            skillNameLabel.append(createNewDiv(null, 'skill-name', skillArray[i]));
+            newSkillLine.append(skillNameLabel);
+
+            const skillCustomNameLabel = createNewLabel('skill-custom-input-label');
+            skillCustomNameLabel.append(createNewInput(skillId + 'CustomSkill', 'skill-name'));
+            newSkillLine.append(skillCustomNameLabel);
+
+            const skillTotalBonusLabel = createNewLabel('skill-total-bonus-label');
+            skillTotalBonusLabel.append(createNewDiv(skillId + 'TotalBonus', 'skill-total-bonus div-border'));
+            newSkillLine.append(skillTotalBonusLabel);
+
+            newSkillLine.append(createNewSymbol('='));
+
+            const skillAssocAbilityLabel = createNewDiv(null, 'skill-assoc-ability-label');
+            skillAssocAbilityLabel.append(createNewDiv(skillId + 'AssocAbility', 'skill-assoc-ability',
+                abilityArray[i]));
+            newSkillLine.append(skillAssocAbilityLabel);
+
+            const skillAssocAbilityModLabel = createNewDiv(null, 'skill-assoc-ability-mod-label');
+            skillAssocAbilityModLabel.append(createNewDiv(skillId + 'AssocAbilityMod', 'skill-assoc-ability-mod div-border'));
+            newSkillLine.append(skillAssocAbilityModLabel);
+
+            newSkillLine.append(createNewSymbol('+'));
+
+            const skillRanksLabel = createNewDiv(null, 'skill-ranks-label');
+            skillRanksLabel.append(createNewInput(skillId + 'Ranks', 'skill-ranks', 'number'));
+            newSkillLine.append(skillRanksLabel);
+
+            newSkillLine.append(createNewSymbol('+'));
+
+            const skillMiscModLabel = createNewDiv(null, 'skill-misc-mod-label');
+            skillMiscModLabel.append(createNewInput(skillId + 'Ranks', 'skill-misc-mod', 'number'));
+            newSkillLine.append(skillMiscModLabel);
+
+            skillSectionId.append(newSkillLine);
+        }
+    }
+
+    createRegularSkillLine(skillsArray0, skillsAbilityArray0);
+    createCustomSkillLine(skillsArray1, skillsAbilityArray1);
+    createRegularSkillLine(skillsArray2, skillsAbilityArray2);
+    createCustomSkillLine(skillsArray3, skillsAbilityArray3);
+    createRegularSkillLine(skillsArray4, skillsAbilityArray4);
+
 }
 
 const initialCalcs = () => {
-    document.getElementById('initTotal').innerHTML = parseInt(data.initMiscModifier) + 
-    parseInt(calculateAbilityModifier(data.DEXabilityScore));
+    document.getElementById('initTotal').innerHTML = parseInt(data.initMiscModifier) +
+        parseInt(calculateAbilityModifier(data.DEXabilityScore));
+
     document.getElementById('initDexModifier').innerHTML = calculateAbilityModifier(data.DEXabilityScore);
+
+    const skillsArray = ['Acrobatics', 'Appraise', 'Bluff', 'Climb', 'Craft1', 'Craft2', 'Craft3', 'Diplomacy',
+        'Disable Device*', 'Disguise', 'Escape Artist', 'Fly', 'Handle Animal*', 'Heal', 'Intimidate',
+        'Knowledge Aracana*', 'Knowledge Dungeoneering*', 'Knowledge Engineering*', 'Knowledge Geography*',
+        'Knowledge History*', 'Knowledge Local*', 'Knowledge Nature*', 'Knowledge Nobility*', 'Knowledge Planes*',
+        'Knowledge Religion*', 'Linguistics*', 'Perception', 'Perform1', 'Perform2', 'Profession1*',
+        'Profession2*', 'Ride', 'Sense Motive', 'Sleight of Hand*', 'Spellcraft*', 'Stealth', 'Survival',
+        'Swim', 'Use Magical Device*'];
+    const skillsAssocAbilityArray = ['DEX', 'INT', 'CHA', 'STR', 'INT', 'INT', 'INT', 'CHA', 'DEX', 'CHA', 'DEX',
+        'DEX', 'CHA', 'WIS', 'CHA', 'INT', 'INT', 'INT', 'INT', 'INT', 'INT', 'INT', 'INT', 'INT', 'INT', 'INT',
+        'WIS', 'CHA', 'CHA', 'WIS', 'WIS', 'DEX', 'WIS', 'DEX', 'INT', 'DEX', 'WIS', 'STR', 'CHA'];
+
+    for (i = 0; i < skillsArray.length; i++) {
+        skillId = 'skill' + skillsArray[i].split(' ').join('').replace(/[^a-zA-Z0-9]/g, '') + 'AssocAbilityMod';
+        skillAssocAbilityScore = skillsAssocAbilityArray[i] + 'abilityScore';
+        skillAssocAbilityId = document.getElementById(skillId);
+        console.log(data[skillAssocAbilityScore]);
+
+        skillAssocAbilityId.innerHTML = calculateAbilityModifier(data[skillAssocAbilityScore]);
+    }
+
 }
 
 $(document).ready(() => {

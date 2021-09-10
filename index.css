@@ -383,16 +383,28 @@ input {
     width: 5%;
 }
 
-.skill-name-label {
+.skill-regular-name-label {
+    width: 41.53%;
+}
+
+.skill-custom-name-label {
     width: 15%;
 }
 
-.skill-total-bonus-label {
-    width: 10%;
+.skill-custom-input-label {
+    width: 25%;
 }
 
-.skill-assoc-ability-label {
-    width: 10%;
+.skill-total-bonus-label,
+.skill-assoc-ability-label,
+.skill-assoc-ability-mod-label,
+.skill-ranks-label,
+.skill-misc-mod-label {
+    width: 6%;
+}
+
+.skill-assoc-ability-mod-label {
+    margin-left: -2%;
 }
 
 
