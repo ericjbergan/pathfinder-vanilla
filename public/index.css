@@ -384,7 +384,7 @@ input {
 }
 
 .skill-regular-name-label {
-    width: 41.53%;
+    width: 40.9%;
 }
 
 .skill-custom-name-label {
@@ -400,7 +400,8 @@ input {
 .skill-assoc-ability-mod-label,
 .skill-ranks-label,
 .skill-misc-mod-label {
-    width: 6%;
+    width: 8%;
+    text-align: center;
 }
 
 .skill-assoc-ability-mod-label {

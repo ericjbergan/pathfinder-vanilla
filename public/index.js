@@ -368,8 +368,7 @@ const createSkillsSection = () => {
 
     const createCustomSkillLine = (skillArray, abilityArray) => {
         for (i = 0; i < skillArray.length; i++) {
-            console.log();
-
+            
             const skillId = ('skill' + skillArray[i]).split(' ').join('');
             const skillSectionId = document.getElementById('skillsSection');
             const newSkillLine = createNewDiv(null, 'skill-line');
@@ -446,7 +445,6 @@ const initialCalcs = () => {
         skillId = 'skill' + skillsArray[i].split(' ').join('').replace(/[^a-zA-Z0-9]/g, '') + 'AssocAbilityMod';
         skillAssocAbilityScore = skillsAssocAbilityArray[i] + 'abilityScore';
         skillAssocAbilityId = document.getElementById(skillId);
-        console.log(data[skillAssocAbilityScore]);
 
         skillAssocAbilityId.innerHTML = calculateAbilityModifier(data[skillAssocAbilityScore]);
     }
