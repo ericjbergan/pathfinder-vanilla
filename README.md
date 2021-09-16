@@ -5,6 +5,6 @@ This is a Pathfinder game character sheet that I've been working on mostly as an
 Current issues (besides being incomplete):
 
 1. CSS for the nameplate lines: not justifying left and right, character name offset high
-2. elements way too tall without using a <label> even when not really needed
+2. elements way too tall without using a 'label' even when not really needed
 3. placeholder not working in Flat-footed modifiers textarea
  
